@@ -1,13 +1,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
-                                <div class="page-title-box d-sm-flex align-items-center justify-content-between" th:fragment="titulo(textoTitulo)">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between" th:fragment="titulo(textoTitulo, caminho)">
                                     <h4 class="mb-sm-0 font-size-18">[[${textoTitulo}]]</h4>
 
-                                    <!-- <div class="page-title-right">
+                                    <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Página Inicial</a></li>
-                                            <li class="breadcrumb-item active">Bem vindo</li>
+                                           	<li class="breadcrumb-item" th:each="item: ${caminho}">[[${item}]]</li>
                                         </ol>
-                                    </div> -->
+                                    </div>
 
                                 </div>
 </html>

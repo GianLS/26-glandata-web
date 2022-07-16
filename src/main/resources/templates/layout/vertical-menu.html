@@ -10,15 +10,15 @@
                         <ul class="metismenu list-unstyled" id="side-menu">
                             <li class="menu-title" key="t-menu">Menu</li>
 
-                            <li>
+                            <li th:class="${menu == 'cadastros' ? 'mm-active' : ''}">
                                 <a href="javascript: void(0);" class="waves-effect has-arrow">
                                     <i class="bx bx-folder-open"></i>
                                     <span key="t-dashboards">Cadastros</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a th:href="@{/clientes}" key="t-default">Clientes</a></li>
-                                    <li><a th:href="@{/categorias}" key="t-saas">Categorias</a></li>
-                                    <li><a th:href="@{/produtos}" key="t-crypto">Produtos</a></li>
+                                    <li><a th:href="@{/clientes}" key="t-default" th:class="${subMenu == 'clientes' ? 'active' : ''}">Clientes</a></li>
+                                    <li><a th:href="@{/categorias}" key="t-saas" th:class="${subMenu == 'categorias' ? 'active' : ''}">Categorias</a></li>
+                                    <li><a th:href="@{/produtos}" key="t-crypto" th:class="${subMenu == 'produtos' ? 'active' : ''}">Produtos</a></li>
                                 </ul>
                             </li>
                         </ul>

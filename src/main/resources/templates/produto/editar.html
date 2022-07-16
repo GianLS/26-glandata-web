@@ -3,7 +3,7 @@
 
 <head th:replace="~{/layout/head :: head}"></head>
 
-<body data-sidebar="dark" th:with="menu='cadastros', subMenu='clientes'">
+<body data-sidebar="dark" th:with="menu='cadastros', subMenu='produtos'">
 
 	<!-- <body data-layout="horizontal" data-topbar="dark"> -->
 
@@ -30,7 +30,7 @@
 					<div class="row">
 						<div class="col-12">
 							<div
-								th:replace="~{/components/titulo-pagina :: titulo('Clientes', ${ {'Cadastros', 'Clientes', 'Incluir'} })}"></div>
+								th:replace="~{/components/titulo-pagina :: titulo('Produtos', ${ {'Cadastros', 'Produtos', 'Editar'} })}"></div>
 
 							<!-- Input Row -->
 							<div class="row">
@@ -38,10 +38,10 @@
 								<div class="col-md-12">
 									<div class="card">
 										<div class="card-body">
-											<h4 class="card-title mb-4">Incluir Cliente</h4>
+											<h4 class="card-title mb-4">Editar Produto</h4>
 
-											<form th:action="@{/clientes/cadastrar}" th:object="${cliente}" method="post">
-												<div th:replace="~{/cliente/componente-formulario :: formulario}"></div>
+											<form th:action="@{/produtos/editar}" method="post" th:object="${produto}">
+												<div th:replace="~{/produto/componente-formulario :: formulario}"></div>
 											</form>
 										</div>
 										<!-- end card body -->

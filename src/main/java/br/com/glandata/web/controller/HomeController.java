@@ -7,16 +7,21 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping()
-public class StartController {
+public class HomeController {
 
 	private static String codigoPagina = "HS-001";
-	
+
 	@GetMapping()
 	public ModelAndView start() {
-		ModelAndView mav = new ModelAndView("pages-starter");
+		ModelAndView mav = new ModelAndView("home/pages-starter");
 		mav.addObject("codigoPagina", codigoPagina);
-				
+
 		return mav;
+	}
+
+	@GetMapping("erro404")
+	public ModelAndView erro404() {
+		return new ModelAndView("home/pages-404");
 	}
 
 }
