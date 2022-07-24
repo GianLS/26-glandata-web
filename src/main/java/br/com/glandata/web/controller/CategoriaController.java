@@ -69,7 +69,7 @@ public class CategoriaController {
 
 		categoriaRepository.save(categoria);
 
-		redirect.addFlashAttribute("mensagem", new Alerta("alert-success", "Categoria cadastrada com sucesso!!", "mdi-check-all"));
+		redirect.addFlashAttribute("mensagem", new Alerta("alert-success", "Categoria cadastrada com sucesso!!", "fas fa-check-circle"));
 
 		return new ModelAndView("redirect:/categorias");
 	}
@@ -111,7 +111,7 @@ public class CategoriaController {
 
 		categoriaRepository.save(categoria);
 
-		redirect.addFlashAttribute("mensagem", new Alerta("alert-success", "Categoria alterada com sucesso!!", "mdi-check-all"));
+		redirect.addFlashAttribute("mensagem", new Alerta("alert-success", "Categoria alterada com sucesso!!", "fas fa-check-circle"));
 
 		return new ModelAndView("redirect:/categorias");
 	}
@@ -127,12 +127,13 @@ public class CategoriaController {
 
 		if (categoria.isEmpty()) {
 			return new ModelAndView("redirect:/erro404");
+			
 		} else if (!categoria.get().getProdutos().isEmpty()) {
-			redirect.addFlashAttribute("mensagem", new Alerta("alert-danger", "Categoria não pôde ser excluída pois está sendo utilizada em algum produto!!", "mdi-alert-circle-outline"));
+			redirect.addFlashAttribute("mensagem", new Alerta("alert-danger", "Categoria não pôde ser excluída pois está sendo utilizada em algum produto!!", "fas fa-exclamation-circle"));
+		
 		} else {
 			categoriaRepository.delete(categoria.get());
-
-			redirect.addFlashAttribute("mensagem", new Alerta("alert-success", "Categoria excluída com sucesso!!", "mdi-check-all"));
+			redirect.addFlashAttribute("mensagem", new Alerta("alert-success", "Categoria excluída com sucesso!!", "fas fa-check-circle"));
 		}
 
 		return new ModelAndView("redirect:/categorias");

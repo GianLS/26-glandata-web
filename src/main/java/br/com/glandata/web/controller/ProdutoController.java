@@ -19,6 +19,7 @@ import br.com.glandata.web.model.Categoria;
 import br.com.glandata.web.model.Produto;
 import br.com.glandata.web.repository.CategoriaRepository;
 import br.com.glandata.web.repository.ProdutoRepository;
+import br.com.glandata.web.session.NavigationSession;
 
 @Controller
 @RequestMapping("produtos")
@@ -29,6 +30,9 @@ public class ProdutoController {
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
+
+	@Autowired
+	private NavigationSession navigationSession;
 
 	/**
 	 * Método que retorna a página com a listagem de todos os produtos.
@@ -54,6 +58,8 @@ public class ProdutoController {
 	 */
 	@GetMapping("cadastrar")
 	public ModelAndView getIncluir(Produto produto) {
+		navigationSession.setTextoSession("Incluir Produto");
+		
 		ModelAndView model = new ModelAndView("produto/cadastrar");
 
 		List<Categoria> categorias = categoriaRepository.findAll();
@@ -92,6 +98,10 @@ public class ProdutoController {
 	 */
 	@GetMapping("{id}/editar")
 	public ModelAndView getEditar(@PathVariable Long id) {
+		navigationSession.setTextoSession("Editar Produto");
+		
+		System.out.println("Mensagem salva em sessão: " + navigationSession.getTextoSession());
+
 		ModelAndView model = new ModelAndView("produto/editar");
 
 		Optional<Produto> produto = produtoRepository.findById(id);

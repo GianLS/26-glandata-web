@@ -6,10 +6,12 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -20,11 +22,9 @@ import org.springframework.format.annotation.NumberFormat;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Table(name = "produtos", indexes = { @Index(name = "id_produto", columnList = "id") })
-@ToString
 public class Produto {
 
 	public Produto() {
@@ -65,6 +65,7 @@ public class Produto {
 	@Setter
 	@ManyToOne(fetch = FetchType.LAZY)
 	@NotNull(message = "Informe uma categoria para o produto.")
+	@JoinColumn(foreignKey = @ForeignKey(name = "fk_categoria"))
 	private Categoria categoria;
 
 	@Getter

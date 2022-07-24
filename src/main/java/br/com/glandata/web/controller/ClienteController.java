@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,6 +49,7 @@ public class ClienteController {
 	 * @return Página para o cadastro de um novo cliente.
 	 */
 	@GetMapping("cadastrar")
+	@Secured({"ROLE_CADASTROS", "ROLE_ADMIN"})
 	public ModelAndView getIncluir(Cliente cliente) {
 		return new ModelAndView("cliente/cadastrar");
 	}
